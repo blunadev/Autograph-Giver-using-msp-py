@@ -1,36 +1,37 @@
 name: Build macOS Executable
 
 on:
-  workflow_dispatch:  # Allows manual triggering from GitHub Actions tab
+  workflow_dispatch:
 
 jobs:
   build-macos:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout main repo
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: '3.10'
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install pyinstaller
-          pip install .
+          pip install git+https://github.com/blunadev/msp-tls-client.git
 
-      - name: Build with PyInstaller
+      - name: Build macOS executable
         run: |
-          pyinstaller --onefile \
+          pyinstaller --onefile autos.py \
             --add-binary "msp_tls_client/dependencies/tls-client-arm64.dylib:msp_tls_client/dependencies" \
-            --add-binary "msp_tls_client/dependencies/tls-client-x86_64.dylib:msp_tls_client/dependencies" \
-            autos.py
+            --add-binary "msp_tls_client/dependencies/tls-client-x86.dylib:msp_tls_client/dependencies"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: macos-executable
+          name: autos-macos
           path: dist/autos
