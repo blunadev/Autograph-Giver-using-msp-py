@@ -19,17 +19,19 @@ jobs:
       - name: Upgrade pip
         run: python -m pip install --upgrade pip
 
-      - name: Install PyInstaller
-        run: pip install pyinstaller
-
-      - name: Install TLS client fork (with prebuilt dylibs)
-        run: pip install git+https://github.com/blunadev/msp-tls-client.git
-
-      - name: Install other dependencies
-        run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller colorama git+https://github.com/blunadev/msp-tls-client.git
+          pip install git+https://github.com/hydrix1/pyamf.git
 
       - name: Build macOS binary
-        run: pyinstaller --onefile autos.py
+        run: |
+          pyinstaller --onefile \
+            --hidden-import=pyamf \
+            --hidden-import=pyamf.remoting \
+            --hidden-import=pyamf.amf3 \
+            --hidden-import=colorama \
+            autos.py
 
       - name: Upload built binary
         uses: actions/upload-artifact@v4
