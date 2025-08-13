@@ -1,40 +1,38 @@
-name: macOS Release
+name: macos-release
 
 on:
-  workflow_dispatch:
+  push:
+    tags:
+      - "v*.*.*"
 
 jobs:
   build:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout main repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Upgrade pip
         run: python -m pip install --upgrade pip
 
       - name: Install dependencies
         run: |
-          pip install pyinstaller colorama git+https://github.com/blunadev/msp-tls-client.git
-          pip install git+https://github.com/hydrix1/pyamf.git
+          pip install pyinstaller colorama
+          pip install git+https://github.com/YOUR_USERNAME/msp-tls-client.git
+          pip install py3amf==0.8.10
 
-      - name: Build macOS binary
+      - name: Build executable
         run: |
-          pyinstaller --onefile \
-            --hidden-import=pyamf \
-            --hidden-import=pyamf.remoting \
-            --hidden-import=pyamf.amf3 \
-            --hidden-import=colorama \
-            autos.py
+          pyinstaller --onefile main.py --name MyAppMac
 
-      - name: Upload built binary
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: macos-binary
-          path: dist/autos
+          name: MyAppMac
+          path: dist/MyAppMac
