@@ -1,0 +1,18 @@
+name: run-macos-binary
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-binary:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make binary executable
+        run: chmod +x path/to/your-binary
+
+      - name: Run binary
+        run: ./path/to/your-binary
