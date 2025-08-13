@@ -24,15 +24,15 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pyinstaller colorama
-          pip install git+https://github.com/YOUR_USERNAME/msp-tls-client.git
+          pip install git+https://github.com/blunadev/msp-tls-client.git
           pip install py3amf==0.8.10
 
       - name: Build executable
         run: |
-          pyinstaller --onefile main.py --name MyAppMac
+          pyinstaller --onefile autos.py --name MyAppMac
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MyAppMac
-          path: dist/MyAppMac
+          name: autos
+          path: dist/autos
