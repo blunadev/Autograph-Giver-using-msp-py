@@ -19,7 +19,11 @@ No more manually clicking for hours — set your targets, run the script, and le
 - 🔗 **Built-in MSP API client** – no need for extra scripts.  
 - 🛠 **Standalone EXE build** with PyInstaller.  
 
-Dependincies for building:
+Dependencies for building:
 https://github.com/xerusmsp/msp-tls-client
 pip install pyinstaller
 pip install p3amf
+
+Thanks to:
+https://github.com/xerusmsp/msp-py
+(request handler)
