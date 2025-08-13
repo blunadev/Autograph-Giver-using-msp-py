@@ -28,5 +28,5 @@ No more manually clicking for hours — set your targets, run the script, and le
 - pip install py3amf
 
 ## Thanks to:
-- https://github.com/xerusmsp/msp-py
+- Xerus https://github.com/xerusmsp/msp-py 
 (request handler)
