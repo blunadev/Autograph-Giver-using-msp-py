@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - "v*.*.*"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -28,12 +29,8 @@ jobs:
           pip install py3amf==0.8.10
 
       - name: Build executable
-        run: pyinstaller --onefile autos.py --name autos
-
-      - name: Test built binary
         run: |
-          chmod +x dist/autos
-          ./dist/autos || echo "Binary exited with non-zero status"
+          pyinstaller --onefile autos.py --name autos
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
