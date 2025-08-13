@@ -18,3 +18,8 @@ No more manually clicking for hours — set your targets, run the script, and le
 - 🎨 **Colorful ASCII art intro** for style points.  
 - 🔗 **Built-in MSP API client** – no need for extra scripts.  
 - 🛠 **Standalone EXE build** with PyInstaller.  
+
+Dependincies for building:
+https://github.com/xerusmsp/msp-tls-client
+pip install pyinstaller
+pip install p3amf
