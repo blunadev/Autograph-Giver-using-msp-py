@@ -19,6 +19,9 @@ No more manually clicking for hours — set your targets, run the script, and le
 - 🔗 **Built-in MSP API client** – no need for extra scripts.  
 - 🛠 **Standalone EXE build** with PyInstaller.  
 
+## Building and Running
+- Includes both build.bat and run.bat (configure your build.bat to correctly find msp-tls-client)
+
 ## Dependencies for building:
 - https://github.com/xerusmsp/msp-tls-client
 - pip install pyinstaller
