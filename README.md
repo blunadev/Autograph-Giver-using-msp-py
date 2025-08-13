@@ -17,7 +17,7 @@ No more manually clicking for hours — set your targets, run the script, and le
 - ⏳ **Cooldown management** – avoids MSP’s rate limits by waiting between sends.  
 - 🎨 **Colorful ASCII art intro** for style points.  
 - 🔗 **Built-in MSP API client** – no need for extra scripts.  
-- 🛠 **Standalone EXE build** with PyInstaller.  
+- 🛠 **EXE build** with PyInstaller.  
 
 ## Building and Running
 - Includes both build.bat and run.bat (configure your build.bat to correctly find msp-tls-client)
